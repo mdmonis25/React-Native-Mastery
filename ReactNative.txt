@@ -1,0 +1,46 @@
+1. SDK Error is from a file that was not created, local.properties
+2. React Native has same styling as web, One difference is that by default it goes from top to bottom not left to right.
+3. SafeAreaView is not necessary, but it helps us avoid notch issues.
+4. function App():JSX.Element //TypeScript Thing to write less buggy code
+{React Native Code}
+-----------------------------------------------------------------------------------------------------
+import React from "react";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  useColorScheme, // hook from appereance module, helps us in color scheming our app
+  StyleSheet // StyleSheet to use css
+} from 'react-native';
+function AppPro():JSX.Element{
+  const isDarkMode = useColorScheme() === 'dark';
+  return(
+    // <SafeAreaView>
+    //   <View style={styles.container}>
+    //     <Text style={isDarkMode ? styles.whiteText : styles.blackText}>Monis</Text>
+    //   </View>
+    // </SafeAreaView>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={isDarkMode ? styles.whiteText : styles.blackText}>Monis</Text>
+      </View>
+    </SafeAreaView>
+  )
+}
+
+//StyleSheet module has a create method which accepts objects as inputs i.e. our styling
+const styles = StyleSheet.create({ 
+  container:{
+    flex:1,
+    alignItems:'center',
+    color: '#ffffff'
+  },
+  whiteText:{
+    color: '#ffffff'
+  },
+  blackText:{
+    color: '#000000'
+  }
+
+})
+export default AppPro;
